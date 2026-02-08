@@ -60,26 +60,26 @@ graph TB
 ### Prerequisites
 - Docker & Docker Compose installed
 - Tailscale CLI installed locally
-- Fork of `openclaw/openclaw` (your fork: https://github.com/jimiryquai/openclaw)
+- Fork of `openclaw/openclaw` (your fork: https://github.com/YOUR-USERNAME/openclaw)
 
 ### Files Structure
 
 ```
-/home/james/Repos/openclaw/
-├── Dockerfile                          # Gateway container definition
-├── docker-compose.tailscale.yml         # Tailscale + gateway services
-├── .env                               # Configuration (DO NOT COMMIT)
-├── .gitignore                          # Excludes tailscale-state/
-├── dist/                              # Built JavaScript (if local image)
-└── tailscale-state/                    # Tailscale state (DO NOT COMMIT)
+~/openclaw/                          # or your repo path
+ ├── Dockerfile                          # Gateway container definition
+ ├── docker-compose.tailscale.yml         # Tailscale + gateway services
+ ├── .env                               # Configuration (DO NOT COMMIT)
+ ├── .gitignore                          # Excludes tailscale-state/
+ ├── dist/                              # Built JavaScript (if local image)
+ └── tailscale-state/                    # Tailscale state (DO NOT COMMIT)
 ```
 
 ### Configuration (.env)
 
 ```bash
 # Gateway Settings
-OPENCLAW_CONFIG_DIR=/home/james/.openclaw
-OPENCLAW_WORKSPACE_DIR=/home/james/.openclaw/workspace
+OPENCLAW_CONFIG_DIR=~/.openclaw
+OPENCLAW_WORKSPACE_DIR=~/.openclaw/workspace
 OPENCLAW_GATEWAY_PORT=18789
 OPENCLAW_BRIDGE_PORT=18790
 OPENCLAW_GATEWAY_BIND=loopback
@@ -96,7 +96,7 @@ TAILSCALE_EXTRA_ARGS=--advertise-exit-node
 ### Starting Services
 
 ```bash
-cd /home/james/Repos/openclaw
+cd ~/openclaw  # or your repo path
 
 # Build image (if using local source)
 docker build -t openclaw:local .
@@ -165,7 +165,7 @@ sudo apt install docker-compose-plugin -y
 
 ```bash
 # Clone your fork (NOT upstream!)
-git clone https://github.com/jimiryquai/openclaw.git
+git clone https://github.com/YOUR-USERNAME/openclaw.git
 cd openclaw
 ```
 
@@ -244,7 +244,7 @@ Tailscale uses NAT traversal, so inbound UDP/TCP not required for standard tailn
 
 ```
 origin (upstream)   https://github.com/openclaw/openclaw.git
-fork (your fork)     https://github.com/jimiryquai/openclaw.git
+fork (your fork)     https://github.com/YOUR-USERNAME/openclaw.git
 local (your machine)   working directory
 ```
 
@@ -253,7 +253,7 @@ local (your machine)   working directory
 ```bash
 # 1. Fork upstream repo on GitHub
 # 2. Add fork as remote
-git remote add fork https://github.com/jimiryquai/openclaw.git
+git remote add fork https://github.com/YOUR-USERNAME/openclaw.git
 
 # 3. Commit changes to fork
 git add .
@@ -409,7 +409,7 @@ docker compose -f docker-compose.tailscale.yml logs -f
 ### Start Local Development
 
 ```bash
-cd /home/james/Repos/openclaw
+cd ~/openclaw  # or your repo path
 docker compose -f docker-compose.tailscale.yml up -d
 ```
 
@@ -434,9 +434,9 @@ docker compose -f docker-compose.tailscale.yml up -d
 
 ## Environment Variables Reference
 
-| Variable | Description | Local | Production |
-|-----------|-------------|---------|-------------|
-| `OPENCLAW_CONFIG_DIR` | Config directory | `/home/james/.openclaw` | `/root/.openclaw` |
+| Variable | Description | Example Local | Example Production |
+|-----------|-------------|----------------|------------------|
+| `OPENCLAW_CONFIG_DIR` | Config directory | `~/.openclaw` | `/root/.openclaw` |
 | `OPENCLAW_GATEWAY_TOKEN` | Gateway auth token | Reusable | Generate new |
 | `OPENCLAW_GATEWAY_BIND` | Network bind | `loopback` | `loopback` |
 | `TAILSCALE_AUTH_KEY` | Tailscale auth | Reusable | **Ephemeral** |
@@ -445,7 +445,7 @@ docker compose -f docker-compose.tailscale.yml up -d
 ## Support
 
 - **Upstream repo**: https://github.com/openclaw/openclaw
-- **Your fork**: https://github.com/jimiryquai/openclaw
+- **Your fork**: https://github.com/YOUR-USERNAME/openclaw
 - **Tailscale docs**: https://tailscale.com/kb/1242/tailscale-serve
 - **OpenClaw docs**: https://docs.openclaw.ai/
 

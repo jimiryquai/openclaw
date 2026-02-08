@@ -21,22 +21,15 @@ graph TB
         Gateway2["⚙️ openclaw-gateway<br/>(Control UI)"]
     end
 
-    subgraph Network1["🔗 Shared Network<br/>(127.0.0.1)"]
-    end
-
     Device1 --"🔒 HTTPS"--> Tailscale1
     Device2 --"🔒 HTTPS"--> Tailscale2
 
     Tailscale1 --"📡 Proxy Headers<br/>to 127.0.0.1:18789"--> Gateway1
     Tailscale2 --"📡 Proxy Headers<br/>to 127.0.0.1:18789"--> Gateway2
 
-    Gateway1 -. Network1
-    Gateway2 -. Network1
-
     style Tailnet fill:#e1f5fe,stroke:#01579b,stroke-width:3px
     style Host1 fill:#f3f9ff,stroke:#0066cc,stroke-width:2px
     style Host2 fill:#f3f9ff,stroke:#0066cc,stroke-width:2px
-    style Network1 fill:#fff4e6,stroke:#ff9900,stroke-width:2px
     style Tailscale1 fill:#90caf9,stroke:#0288d1,stroke-width:2px
     style Tailscale2 fill:#90caf9,stroke:#0288d1,stroke-width:2px
     style Gateway1 fill:#81c784,stroke:#2e7d32,stroke-width:2px
